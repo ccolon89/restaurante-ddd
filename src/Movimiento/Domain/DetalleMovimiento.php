@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Restaurrante\movimiento\domain;
+namespace Restaurante\Movimiento\Domain;
 
-class Detalle_Movimiento
+class DetalleMovimiento
 {
     private $cantidad;
     private $tipo;

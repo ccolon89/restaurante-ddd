@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restaurante\producto\domain;
+namespace Restaurante\Producto\Domain;
 
 class ProductoCompuesto extends Producto {
 

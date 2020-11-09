@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Restaurante\movimiento\domain;
+namespace Restaurante\Movimiento\Domain;
 
-use Restaurante\producto\domain\ProductoCompuesto;
-use Restaurante\producto\domain\ProductoSimple;
+use Restaurante\Producto\Domain\ProductoCompuesto;
+use Restaurante\Producto\Domain\ProductoSimple;
 
 class Movimiento
 {
@@ -16,17 +16,17 @@ class Movimiento
    }
 
    public function entrada(ProductoSimple $producto, int $cantidad,float $costo) : void {
-       $detalle = new Detalle_Movimiento($producto->getSku(),$cantidad,$costo,0,'ENTRADA');
+       $detalle = new DetalleMovimiento($producto->getSku(),$cantidad,$costo,0,'ENTRADA');
        $this->detalle_movimiento[] = $detalle;
    }
 
    public function salida(ProductoSimple $producto, int $cantidad, float $costo,float $precio) : void {
-        $detalle = new Detalle_Movimiento($producto->getSku(),$cantidad,$costo,$precio,'SALIDA');
+        $detalle = new DetalleMovimiento($producto->getSku(),$cantidad,$costo,$precio,'SALIDA');
         $this->detalle_movimiento[] = $detalle;
    }
 
     public function salidaCompuesto(ProductoCompuesto $producto, int $cantidad,float $precio) : void {
-        $detalle = new Detalle_Movimiento($producto->getSku(),$cantidad,$producto->getCosto(),$precio,'SALIDA');
+        $detalle = new DetalleMovimiento($producto->getSku(),$cantidad,$producto->getCosto(),$precio,'SALIDA');
         $this->detalle_movimiento[] = $detalle;
         self::addDetallesProductoCompuesto($producto,$cantidad);
     }
@@ -34,7 +34,7 @@ class Movimiento
     private function  addDetallesProductoCompuesto(ProductoCompuesto $producto, int $cantidad) : void {
 
         foreach ($producto->getIngredientes() as $ingrediente){
-            $detalle = new Detalle_Movimiento($ingrediente->getSku(),$cantidad,$ingrediente->getCosto(),$ingrediente->getPrecio(),'SALIDA');
+            $detalle = new DetalleMovimiento($ingrediente->getSku(),$cantidad,$ingrediente->getCosto(),$ingrediente->getPrecio(),'SALIDA');
             $this->detalle_movimiento[] = $detalle;
         }
 
