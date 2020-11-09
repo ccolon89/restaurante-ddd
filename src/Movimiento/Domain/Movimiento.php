@@ -7,7 +7,7 @@ namespace Restaurante\Movimiento\Domain;
 use Restaurante\Producto\Domain\ProductoCompuesto;
 use Restaurante\Producto\Domain\ProductoSimple;
 
-class Movimiento
+final class Movimiento
 {
 
     public function __construct()
