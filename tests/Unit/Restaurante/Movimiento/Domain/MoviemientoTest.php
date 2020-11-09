@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Restaurante\Movimieto\Domain;
+namespace Tests\Unit\Restaurante\Movimiento\Domain;
 
 use PHPUnit\Framework\TestCase;
 use Restaurante\Movimiento\Domain\Movimiento;

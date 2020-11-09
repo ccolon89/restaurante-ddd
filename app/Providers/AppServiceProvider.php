@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Restaurante\Producto\Domain\IProductoSimpleRepository;
+use Restaurante\Producto\Infrastructure\ProductoSimpleEloquentRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(IProductoSimpleRepository::class,ProductoSimpleEloquentRepository::class);
     }
 
     /**
