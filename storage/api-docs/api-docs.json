@@ -1,0 +1,64 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Restaurante",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/productoSimple": {
+            "post": {
+                "tags": [
+                    "crear un nuevo producto simple"
+                ],
+                "summary": "crear un nuevo producto simple",
+                "description": "Nuevo producto simple",
+                "operationId": "App\\Http\\Controllers\\ProductoSimple\\ProductoSimplePostController::__invoke",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nombre",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "costo",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "precio",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

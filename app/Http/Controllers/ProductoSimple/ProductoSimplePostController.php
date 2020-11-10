@@ -18,7 +18,50 @@ class ProductoSimplePostController extends Controller
     {
         $this->service = $service;
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/productoSimple",
+     *     tags={"crear un nuevo producto simple"},
+     *     summary="crear un nuevo producto simple",
+     *     description="Nuevo producto simple",
+     *     @OA\Parameter(
+     *      name="sku",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *     ),
+     *     @OA\Parameter(
+     *      name="nombre",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *     ),
+     *     @OA\Parameter(
+     *      name="costo",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="number"
+     *      )
+     *     ),
+     *     @OA\Parameter(
+     *      name="precio",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="number"
+     *      )
+     *     ),
+     *     @OA\Response(response="201", description="success"),
+     *     @OA\Response(response="400", description="Bad Request")
+     * )
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
     public function __invoke(Request $request) {
 
        $productoRequest = new CrearProductoSimpleRequest(

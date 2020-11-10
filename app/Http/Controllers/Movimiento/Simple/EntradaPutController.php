@@ -19,6 +19,7 @@ class EntradaPutController extends Controller
         $this->service = $service;
     }
 
+
     public function __invoke(Request $request) {
 
         $request = new EntradaProductoRequest(
