@@ -2,7 +2,7 @@
 
 namespace Restaurante\Movimiento\Aplication;
 
-final class EntradaProductoSimpleRequest
+final class EntradaProductoRequest
 {
 
   private string $sku;

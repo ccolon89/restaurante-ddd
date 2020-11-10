@@ -2,12 +2,15 @@
 
 namespace Tests\Feature\Movimiento;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Restaurante\Producto\Infrastructure\Eloquent\ProductoSimpleModel;
 use Tests\TestCase;
 
 final class EntradaProductoSimpleTest extends TestCase
 {
+        use RefreshDatabase;
+
        /**
         * @test
         */

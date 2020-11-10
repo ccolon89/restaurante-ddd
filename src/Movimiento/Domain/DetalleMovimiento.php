@@ -88,6 +88,16 @@ class DetalleMovimiento
         $this->precio = $precio;
     }
 
+    public function toArray() : array {
+        return [
+          'sku' => $this->sku,
+          'cantidad' => $this->cantidad,
+          'precio' => $this->precio,
+          'costo' => $this->costo,
+          'tipo' => $this->tipo
+        ];
+    }
+
 
 
 }

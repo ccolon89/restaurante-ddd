@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Restaurante\Producto\Infrastructure;
-
 
 use Restaurante\Producto\Domain\IProductoSimpleRepository;
 use Restaurante\Producto\Domain\ProductoSimple;
@@ -21,6 +19,14 @@ final class ProductoSimpleEloquentRepository implements IProductoSimpleRepositor
     public function save(ProductoSimple $productoSimple): void
     {
         $this->model->fill($productoSimple->toArray());
+        $this->model->tipo = 'simple';
         $this->model->save();
+    }
+
+    public function search(string $sku): ?ProductoSimple
+    {
+         $producto = ProductoSimpleModel::find($sku);
+         $producto = $producto!=null ? ProductoSimple::fromArray($producto->attributesToArray()) : null;
+         return $producto;
     }
 }

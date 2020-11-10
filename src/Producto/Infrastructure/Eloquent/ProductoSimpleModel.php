@@ -8,6 +8,6 @@ class ProductoSimpleModel extends Model
 {
     protected $keyType  = 'string';
     protected $primaryKey = 'sku';
-    protected $table = 'productos_simples';
-    protected  $fillable = ['sku','nombre','costo','precio'];
+    protected $table = 'productos';
+    protected $fillable = ['sku','nombre','costo','precio','tipo'];
 }

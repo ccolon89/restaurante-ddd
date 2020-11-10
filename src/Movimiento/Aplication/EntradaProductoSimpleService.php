@@ -3,8 +3,8 @@
 namespace Restaurante\Movimiento\Aplication;
 
 use Restaurante\Movimiento\Domain\IMovimientoRepository;
-use Restaurante\Movimiento\Domain\Movimiento;
 use Restaurante\Producto\Domain\IProductoSimpleRepository;
+use Restaurante\Producto\Domain\ProductoNoExiste;
 
 final class EntradaProductoSimpleService
 {
@@ -17,9 +17,16 @@ final class EntradaProductoSimpleService
        $this->movimientoRepository = $movimientoRepository;
     }
 
-    public function __invoke(EntradaProductoSimpleRequest $request)
+    public function __invoke(EntradaProductoRequest $request)
     {
-        $movimiento = $this->movimientoRepository->get() ? : new Movimiento();
+        $producto = $this->productoRepository->search($request->sku());
+
+        if($producto == null)
+            throw new ProductoNoExiste($request->sku());
+
+        $movimientos = $this->movimientoRepository->get();
+        $movimientos->entrada($producto,$request->cantidad(),$request->costo());
+        $this->movimientoRepository->save($movimientos);
     }
 
 }

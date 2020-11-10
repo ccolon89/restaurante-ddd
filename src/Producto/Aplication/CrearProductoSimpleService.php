@@ -4,6 +4,7 @@ namespace Restaurante\Producto\Aplication;
 
 use Restaurante\Producto\Domain\IProductoSimpleRepository;
 use Restaurante\Producto\Domain\ProductoSimple;
+use Restaurante\Producto\Domain\ProductoSimpleDuplicado;
 
 final class CrearProductoSimpleService
 {
@@ -17,6 +18,10 @@ final class CrearProductoSimpleService
 
     public function __invoke(CrearProductoSimpleRequest  $request)
     {
+        $producto = $this->repository->search($request->sku());
+        if($producto!=null)
+            throw new ProductoSimpleDuplicado($producto->getSku());
+        
         $producto = new ProductoSimple(
             $request->sku(),
             $request->nombre(),

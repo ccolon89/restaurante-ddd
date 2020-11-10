@@ -19,4 +19,13 @@ class ProductoSimple extends Producto {
             'precio' => $this->getPrecio()
         ];
       }
+
+      public static function fromArray(array $producto) : ProductoSimple {
+          return new self(
+              $producto['sku'],
+              $producto['nombre'],
+              $producto['costo'],
+              $producto['precio']
+          );
+      }
 }

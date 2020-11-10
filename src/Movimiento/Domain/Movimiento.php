@@ -9,10 +9,15 @@ use Restaurante\Producto\Domain\ProductoSimple;
 
 final class Movimiento
 {
+   private $detalle_movimiento;
 
     public function __construct()
    {
        $this->detalle_movimiento = [];
+   }
+
+   public function getDetalles () : array {
+        return $this->detalle_movimiento;
    }
 
    public function entrada(ProductoSimple $producto, int $cantidad,float $costo) : void {
