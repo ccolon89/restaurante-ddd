@@ -25,7 +25,7 @@ final class ProductoSimpleMother
       );
    }
 
-   public function random() : ProductoSimple {
+   public static function random() : ProductoSimple {
        return self::create(
           UuidMother::random(),
           WordMother::random(),
