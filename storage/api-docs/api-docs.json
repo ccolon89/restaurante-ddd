@@ -5,6 +5,51 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/entrada/simple/{sku}": {
+            "put": {
+                "tags": [
+                    "Entrada de un producto simple"
+                ],
+                "description": "Entrada de un producto simple",
+                "operationId": "App\\Http\\Controllers\\Movimiento\\Simple\\EntradaPutController::__invoke",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "description": "ID of producto simple",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2387983d-fbd6-410f-8c71-dc92c4899d01"
+                    },
+                    {
+                        "name": "cantidad",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "costo",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
         "/api/productoSimple": {
             "post": {
                 "tags": [

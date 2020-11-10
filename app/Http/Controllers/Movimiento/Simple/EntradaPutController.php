@@ -19,7 +19,43 @@ class EntradaPutController extends Controller
         $this->service = $service;
     }
 
-
+    /**
+     * @OA\Put(
+     * tags={"Entrada de un producto simple"},
+     * description="Entrada de un producto simple",
+     * path="/api/entrada/simple/{sku}",
+     * @OA\Parameter(
+     *    description="ID of producto simple",
+     *    in="path",
+     *    name="sku",
+     *    required=true,
+     *    example="2387983d-fbd6-410f-8c71-dc92c4899d01",
+     *    @OA\Schema(
+     *       type="string",
+     *    )
+     * ),
+     *     @OA\Parameter(
+     *      name="cantidad",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="number"
+     *      )
+     *     ),
+     *     @OA\Parameter(
+     *      name="costo",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="number"
+     *      )
+     *     ),
+     * @OA\Response(response="200", description="success"),
+     * @OA\Response(response="400", description="Bad Request")
+     * )
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
     public function __invoke(Request $request) {
 
         $request = new EntradaProductoRequest(
